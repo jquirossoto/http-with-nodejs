@@ -1,5 +1,5 @@
-// const https = require('https');
-const http = require('http');
+const https = require('https');
+// const http = require('http');
 const url = require('url');
 const fs = require('fs');
 const jsonBody = require('body/json');
@@ -7,12 +7,12 @@ const jsonBody = require('body/json');
 const services = require('./services');
 const formidable = require('formidable');
 
-// const server = https.createServer({
-//     key: fs.readFileSync('./key.pem'),
-//     cert: fs.readFileSync('./cert.pem')
-// });
+const server = https.createServer({
+    key: fs.readFileSync('./key.pem'),
+    cert: fs.readFileSync('./cert.pem')
+});
 
-const server = http.createServer();
+// const server = http.createServer();
 
 server.on('request', (request, response) => {
     const parsedUrl = url.parse(request.url, true);
@@ -67,5 +67,5 @@ server.on('request', (request, response) => {
     }
 });
 
-// server.listen(443);
-server.listen(4000);
+server.listen(443);
+// server.listen(4000);
